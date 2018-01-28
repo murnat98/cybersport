@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-. ../env/bin/activate
+project_dir=~/cybersport
 
-sudo python manage.py $@
+. ${project_dir}/env/bin/activate
+
+sudo python ${project_dir}/src/manage.py $@
 
 if [[ $1 == "migrate" ]]
 then
