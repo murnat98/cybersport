@@ -26,4 +26,4 @@ fi
 # install requirements
 echo "Installing project requirements..."
 . ${project_dir}/env/bin/activate
-pip3.6 install -r ${project_dir}/requirements.txt
+pip install -r ${project_dir}/requirements.txt
