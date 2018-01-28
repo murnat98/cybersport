@@ -2,11 +2,11 @@
 
 project_dir=~/cybersport
 
-echo "Activating virtual environment..."
+echo "Activating the virtual environment..."
 . ${project_dir}/env/bin/activate
 
 echo "Executing manage.py..."
-sudo python ${project_dir}/src/manage.py $@
+python ${project_dir}/src/manage.py $@
 
 if [[ $1 == "migrate" ]]
 then
