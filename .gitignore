@@ -1,0 +1,6 @@
+/env
+/.idea
+
+settings.ini
+/shell-scripts/databases/
+/shell-scripts/tunnel.sh
