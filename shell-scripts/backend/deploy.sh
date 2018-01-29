@@ -19,6 +19,7 @@ else
 	git pull
 	echo "Migrating changes to database..."
     ./src/manage.sh migrate
+    ./src/manage.sh collectstatic
 
     cd ${return_dir}
 fi
