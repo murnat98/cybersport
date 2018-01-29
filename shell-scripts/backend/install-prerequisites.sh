@@ -21,5 +21,5 @@ sudo systemctl start nginx
 sudo systemctl enable nginx
 
 echo "Installing uWsgi..."
-sudo yum -y install python3-devel gcc
+sudo yum -y install python36-devel.x86-64 gcc
 sudo pip3.6 install uwsgi
