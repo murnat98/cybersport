@@ -12,6 +12,8 @@ then
 	# Create virtual environment
 	echo "Creating virtual environment..."
 	python3.6 -m venv ${project_dir}/env
+
+	sudo ln -s ${project_dir}/nginx/cybersport.conf /etc/nginx/conf.d/
 else
 	cd ${project_dir}
 
