@@ -20,6 +20,7 @@ else
 	echo "Migrating changes to database..."
     ./src/manage.sh migrate
     ./src/manage.sh collectstatic
+    # Add testing
 
     cd ${return_dir}
 fi
