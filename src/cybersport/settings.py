@@ -76,17 +76,27 @@ WSGI_APPLICATION = 'cybersport.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-databases_config = config['DATABASES']
+database_shard_1 = config['DATABASES']['SHARD_1']
+database_shard_2 = config['DATABASES']['SHARD_2']
+postgresql_engine = 'django.db.backends.postgresql_psycopg2'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': databases_config['database'],
-        'USER': databases_config['user'],
-        'PASSWORD': databases_config['password'],
-        'HOST': databases_config['host'],
-        'PORT': databases_config['port'],
-    }
+        'ENGINE': postgresql_engine,
+        'NAME': database_shard_1['database'],
+        'USER': database_shard_1['user'],
+        'PASSWORD': database_shard_1['password'],
+        'HOST': database_shard_1['host'],
+        'PORT': database_shard_1['port'],
+    },
+    'shard_2': {
+        'ENGINE': postgresql_engine,
+        'NAME': database_shard_2['database'],
+        'USER': database_shard_2['user'],
+        'PASSWORD': database_shard_2['password'],
+        'HOST': database_shard_2['host'],
+        'PORT': database_shard_2['port'],
+    },
 }
 
 # Password validation
