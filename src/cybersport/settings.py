@@ -76,8 +76,8 @@ WSGI_APPLICATION = 'cybersport.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-database_shard_1 = config['DATABASES']['SHARD_1']
-database_shard_2 = config['DATABASES']['SHARD_2']
+database_shard_1 = config['SHARD_1']
+database_shard_2 = config['SHARD_2']
 postgresql_engine = 'django.db.backends.postgresql_psycopg2'
 
 DATABASES = {
