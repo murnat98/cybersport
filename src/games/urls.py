@@ -1,5 +1,5 @@
-from django.urls import path
+app_name = 'games'
 
 urlpatterns = [
-    path('/', name='list')
+    # path('/', name='list')
 ]

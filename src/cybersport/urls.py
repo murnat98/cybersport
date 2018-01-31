@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+api_version = 'api/v0.1/%s'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v0.1/', include('cybersport.api_urls', namespace='api')),
+    path(api_version % 'games', include('games.urls', namespace='games')),
 ]
