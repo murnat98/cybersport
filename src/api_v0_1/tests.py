@@ -34,13 +34,13 @@ class TestGamesViews(TestCase):
         content = json.loads(response.content)
         results = content['results']
 
-        descr_1 = results[0][description_field]
-        descr_2 = results[1][description_field]
-        descr_3 = results[2][description_field]
+        description_1 = results[0][description_field]
+        description_2 = results[1][description_field]
+        description_3 = results[2][description_field]
 
-        self.assertEquals(descr_3, 'a description')
-        self.assertEquals(descr_2, 'description_a')
-        self.assertEquals(descr_1, 'some description')
+        self.assertEquals(description_3, 'a description')
+        self.assertEquals(description_2, 'description_a')
+        self.assertEquals(description_1, 'some description')
 
     def test_games_order_by_unknown_field(self):
         name_field = 'name'
@@ -56,3 +56,4 @@ class TestGamesViews(TestCase):
         self.assertEquals(name_1, 'name_a')
         self.assertEquals(name_2, 'name_a2')
         self.assertEquals(name_3, 'name_z')
+# TODO: add test for pagination
