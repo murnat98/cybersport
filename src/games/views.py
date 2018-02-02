@@ -1,19 +1,11 @@
 from rest_framework import viewsets
-from rest_framework.pagination import PageNumberPagination
 
 from games.models import Games
 from games.serializers import GamesListSerializer
+from games.utils import QuerySetOrderingMixin, DefaultPagination
 
 
-class DefaultPagination(PageNumberPagination):
-    page_size = 10
-
-
-class GamesPagination(DefaultPagination):
-    pass
-
-
-class GamesListView(viewsets.ModelViewSet):
-    queryset = Games.objects.all()
+class GamesListView(QuerySetOrderingMixin, viewsets.ModelViewSet):
     serializer_class = GamesListSerializer
-    pagination_class = GamesPagination
+    pagination_class = DefaultPagination
+    model = Games
