@@ -1,26 +1,16 @@
 from rest_framework import serializers
 
+from api_v0_1.serializers import default_serializer_fields
 from games.models import Games
 
 
 class GamesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Games
-        fields = (
-            'id',
-            'name',
-            'description',
-            'logo',
-            # TODO: show url of the object
-        )
+        fields = default_serializer_fields
 
 
 class GameDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Games
-        fields = (
-            'id',
-            'name',
-            'description',
-            'logo',
-        )
+        fields = default_serializer_fields

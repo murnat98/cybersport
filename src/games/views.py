@@ -1,16 +1,9 @@
-from rest_framework import viewsets
-
-from api_v0_1.utils import QuerySetOrderingMixin, DefaultPagination
+from api_v0_1.views import DefaultAPIView
 from games.models import Games
 from games.serializers import GamesListSerializer, GameDetailSerializer
 
 
-class GamesView(QuerySetOrderingMixin, viewsets.ModelViewSet):
-    pagination_class = DefaultPagination
+class GamesView(DefaultAPIView):
     model = Games
-
-    def get_serializer_class(self):
-        if self.action == 'list':
-            return GamesListSerializer
-
-        return GameDetailSerializer
+    list_serializer_class = GamesListSerializer
+    detail_serializer_class = GameDetailSerializer
