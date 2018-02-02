@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api_v0_1.apps.ApiV01Config',
     'games.apps.GamesConfig',
     'rest_framework',
     'debug_toolbar',

@@ -22,7 +22,7 @@ api_version = 'api/v0.1/%s'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(api_version % 'games', include('games.urls', namespace='games')),
+    path('api/v0.1/', include('api_v0_1.urls', namespace='api')),
 ]
 
 if settings.DEBUG is True:
