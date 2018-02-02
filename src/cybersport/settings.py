@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api_v0_1.apps.ApiV01Config',
     'games.apps.GamesConfig',
+    'tournaments.apps.TournamentsConfig',
     'rest_framework',
     'debug_toolbar',
 ]
