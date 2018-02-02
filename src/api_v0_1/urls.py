@@ -1,10 +1,10 @@
-from rest_framework.routers import DefaultRouter
+from rest_framework.routers import SimpleRouter
 
 from api_v0_1.views import GamesView
 
 app_name = 'games'
 
-router = DefaultRouter()
-router.register('games', GamesView, 'retrieve')
+router = SimpleRouter()
+router.register('games', GamesView, 'games')
 
 urlpatterns = router.urls
