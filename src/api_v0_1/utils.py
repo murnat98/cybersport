@@ -30,4 +30,7 @@ class QuerySetOrderingMixin:
         except FieldDoesNotExist:
             return self.model.objects.all()
 
+        if 'desc' in self.request.GET:
+            sort_parameter = '-%s' % sort_parameter
+
         return self.model.objects.all().order_by(sort_parameter)
