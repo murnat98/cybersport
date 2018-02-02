@@ -1,6 +1,6 @@
 from rest_framework.routers import SimpleRouter
 
-from api_v0_1.views import GamesView
+from games.views import GamesView
 
 app_name = 'games'
 
