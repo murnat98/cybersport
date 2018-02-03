@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 
@@ -6,6 +8,7 @@ def logo_directory_path(instance, filename):
 
 
 class BaseAPIModel(models.Model):
+    uuid = models.UUIDField(editable=False, default=uuid.uuid4, name='uuid', verbose_name='UUID')
     name = models.CharField(max_length=255, name='name', verbose_name='Название')
     description = models.TextField(blank=True, name='description', verbose_name='Описание')
     logo = models.ImageField(blank=True, name='logo', verbose_name='Логотип', upload_to=logo_directory_path)
