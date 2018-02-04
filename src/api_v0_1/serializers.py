@@ -1,5 +1,6 @@
 default_serializer_fields = (
     'id',
+    'uuid',
     'name',
     'description',
     'logo',
