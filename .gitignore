@@ -7,3 +7,5 @@ settings.ini
 /static/
 /media/
 /test-reports/
+/.vagrant/
+/Vagrantfile
