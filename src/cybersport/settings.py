@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'debug_toolbar',
     'cacheops',
+    'django_jenkins',
 ]
 
 MIDDLEWARE = [
@@ -187,3 +188,12 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Jenkins settings
+JENKINS_TASKS = (
+    'django_jenkins.tasks.run_pylint',
+    'django_jenkins.tasks.run_pep8',
+    'django_jenkins.tasks.run_pyflakes',
+    'django_jenkins.tasks.with_coverage',
+    'django_jenkins.tasks.django_tests',
+)
