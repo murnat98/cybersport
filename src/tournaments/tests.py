@@ -1,4 +1,5 @@
 import json
+import uuid
 
 from django.test import TestCase
 from django.urls import reverse
@@ -13,7 +14,7 @@ class TestTournamentShard(TestCase):
     def setUp(self):
         self.created_tournaments = []
         for name in self.names:
-            self.created_tournaments.append(Tournaments.objects.create(name=name))
+            self.created_tournaments.append(Tournaments.objects.create(name=name, game_uuid=uuid.uuid4()))
 
     def test_sharding(self):
         for tournament in self.created_tournaments:
