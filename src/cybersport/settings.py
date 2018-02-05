@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'tournaments.apps.TournamentsConfig',
     'rest_framework',
     'debug_toolbar',
+    'cacheops',
 ]
 
 MIDDLEWARE = [
@@ -103,6 +104,47 @@ DATABASES = {
         'HOST': database_shard_2['host'],
         'PORT': database_shard_2['port'],
     },
+}
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+CACHEOPS_REDIS = {
+    'host': 'localhost',
+    'port': 6379,
+    'socket_timeout': 3,
+}
+
+CACHEOPS = {
+    # Automatically cache any User.objects.get() calls for 15 minutes
+    # This includes request.user or post.author access,
+    # where Post.author is a foreign key to auth.User
+    'auth.user': {'ops': 'get', 'timeout': 60 * 15},
+
+    # Automatically cache all gets and queryset fetches
+    # to other django.contrib.auth models for an hour
+    'auth.*': {'ops': ('fetch', 'get'), 'timeout': 60 * 60},
+
+    # Cache all queries to Permission
+    # 'all' is just an alias for {'get', 'fetch', 'count', 'aggregate', 'exists'}
+    'auth.permission': {'ops': 'all', 'timeout': 60 * 60},
+
+    # Enable manual caching on all other models with default timeout of an hour
+    # Use Post.objects.cache().get(...)
+    #  or Tags.objects.filter(...).order_by(...).cache()
+    # to cache particular ORM request.
+    # Invalidation is still automatic
+    '*.*': {'ops': (), 'timeout': 60 * 60},
+
+    # And since ops is empty by default you can rewrite last line as:
+    '*.*': {'timeout': 60 * 60},
 }
 
 # Password validation

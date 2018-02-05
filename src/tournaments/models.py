@@ -4,7 +4,7 @@ from api_v0_1.models import BaseAPIModel
 from games.models import Games
 from tournaments.managers import TournamentsManager
 
-games = ((game.uuid, game.name) for game in Games.objects.all())
+games = ((game.uuid, game.name) for game in Games.objects.all())  # TODO: cache here
 
 
 class Tournaments(BaseAPIModel):
