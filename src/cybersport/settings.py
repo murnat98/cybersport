@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'api_v0_1.apps.ApiV01Config',
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
+    'matches.apps.MatchesConfig',
     'rest_framework',
     'debug_toolbar',
     'cacheops',
