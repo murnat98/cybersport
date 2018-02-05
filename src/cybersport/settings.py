@@ -50,11 +50,6 @@ INSTALLED_APPS = [
     'django_jenkins',
 ]
 
-PROJECT_APPS = [
-    'games.apps.GamesConfig',
-    'tournaments.apps.TournamentsConfig',
-]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -196,7 +191,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Jenkins settings
 JENKINS_TASKS = (
-    'django_jenkins.tasks.run_pylint',
+    # 'django_jenkins.tasks.run_pylint',
     'django_jenkins.tasks.run_pep8',
     'django_jenkins.tasks.run_pyflakes',
 )
+
+PROJECT_APPS = [
+    'games.apps.GamesConfig',
+    'tournaments.apps.TournamentsConfig',
+]
