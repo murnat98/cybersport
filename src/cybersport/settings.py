@@ -50,6 +50,11 @@ INSTALLED_APPS = [
     'django_jenkins',
 ]
 
+PROJECT_APPS = [
+    'games.apps.GamesConfig',
+    'tournaments.apps.TournamentsConfig',
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
