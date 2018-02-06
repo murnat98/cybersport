@@ -14,14 +14,17 @@ class BaseAPIModel(models.Model):
     logo = models.ImageField(blank=True, name='logo', verbose_name='Логотип', upload_to=logo_directory_path)
     created_at = models.DateTimeField(auto_now_add=True, name='created_at', verbose_name='Создан в')
 
-    sharding_data = None
+    sharding = False
 
     def __str__(self):
         return self.name
 
+    def shard(self):
+        raise NotImplementedError('`shard` function not implemented')
+
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        if self.sharding_data is not None:
-            using = self.manager.sharding_scheme(uuid=self.uuid)
+        if self.sharding is True:
+            using = self.shard()
 
         super().save(force_insert, force_update, using, update_fields)
 
