@@ -200,4 +200,5 @@ JENKINS_TASKS = (
 PROJECT_APPS = [
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
+    'matches.apps.MatchesConfig',
 ]
