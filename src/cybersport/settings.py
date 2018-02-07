@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'cacheops',
     'django_jenkins',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'cybersport.urls'
 
@@ -192,7 +196,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Jenkins settings
 JENKINS_TASKS = (
-    'django_jenkins.tasks.run_pylint',
+    # 'django_jenkins.tasks.run_pylint', TODO: add this
     'django_jenkins.tasks.run_pep8',
     'django_jenkins.tasks.run_pyflakes',
 )
