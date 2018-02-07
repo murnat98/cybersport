@@ -3,6 +3,7 @@ default_serializer_fields = (
     'uuid',
     'name',
     'description',
+    'created_at',
     'logo',
     # TODO: show url of the object
 )
