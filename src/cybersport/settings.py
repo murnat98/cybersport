@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
     'matches.apps.MatchesConfig',
+    'teams.apps.TeamsConfig',
     'rest_framework',
     'debug_toolbar',
     'cacheops',
@@ -205,4 +206,5 @@ PROJECT_APPS = [
     'games.apps.GamesConfig',
     'tournaments.apps.TournamentsConfig',
     'matches.apps.MatchesConfig',
+    'teams.apps.TeamsConfig',
 ]
