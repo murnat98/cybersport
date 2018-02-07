@@ -19,3 +19,17 @@ class TeamsManager(ShardSupportManager):
         Uses the same sharding scheme as the tournaments model.
         """
         return TournamentsManager.sharding_scheme(*args, **kwargs)
+
+
+class TeamsTournamentsMatchingManager(ShardSupportManager):
+    @staticmethod
+    def sharding_scheme(*args, **kwargs):
+        """
+        Sharding in the same database as the tournament is.
+        """
+        if 'team_uuid' not in kwargs:
+            raise KeyError('`team_uuid` required for sharding scheme')
+
+        team_uuid = kwargs['team_uuid']
+
+        return TeamsManager.sharding_scheme(uuid=team_uuid)

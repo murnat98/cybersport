@@ -9,7 +9,7 @@ from tournaments.models import Tournaments
 
 class MatchesShardingTest(BaseShardingTest):
     model = Matches
-    names = ('match 1', 'some match', 'wow match', 'a match',)
+    iter = ('match 1', 'some match', 'wow match', 'a match',)
     tournament_names = ('tournament 1', 'tournament 2', 'tournament 3', 'tournament 4', 'tournament 5')
 
     def setUp(self):
@@ -29,11 +29,11 @@ class MatchesShardingTest(BaseShardingTest):
         for match in self.setup_objects:
             self.assertTrue(self._in_right_shard(match), msg='Match with uuid %s not found in right db' % match.uuid)
 
-    def _get_creation_kwargs(self, name):
+    def _get_creation_kwargs(self, iter_obj):
         tournament_uuids = [obj for obj in Tournaments.objects.using('default').values('uuid')]
         tournament_uuids += [obj for obj in Tournaments.objects.using('shard_2').values('uuid')]
 
-        return {'name': name, 'tournament_uuid': random.choice(tournament_uuids)['uuid']}
+        return {'name': iter_obj, 'tournament_uuid': random.choice(tournament_uuids)['uuid']}
 
     def _in_right_shard(self, obj, *args, **kwargs):
         tournament_uuid = obj.tournament_uuid

@@ -9,11 +9,11 @@ from tournaments.models import Tournaments
 
 class TestUUIDSharding(BaseShardingTest):
     model = Tournaments
-    names = ('tournament', 'a tournament', '1 t', 'some tournament',)
-    sorted_names = sorted(names)
+    iter = ('tournament', 'a tournament', '1 t', 'some tournament',)
+    sorted_names = sorted(iter)
 
-    def _get_creation_kwargs(self, name):
-        return {'name': name, 'game_uuid': uuid.uuid4()}
+    def _get_creation_kwargs(self, iter_obj):
+        return {'name': iter_obj, 'game_uuid': uuid.uuid4()}
 
     def _in_right_shard(self, obj, *args, **kwargs):
         assert isinstance(obj, self.model)

@@ -4,7 +4,7 @@ from django.test import TestCase
 
 class BaseShardingTest(TestCase):
     model = None
-    names = ()
+    iter = ()
 
     creation_kwargs = {}
 
@@ -13,16 +13,16 @@ class BaseShardingTest(TestCase):
         Create test objects in databases
         """
         self.setup_objects = []
-        for name in self.names:
+        for iter_obj in self.iter:
             assert issubclass(self.model, models.Model)
 
-            self.creation_kwargs = self._get_creation_kwargs(name)
+            self.creation_kwargs = self._get_creation_kwargs(iter_obj)
             self.setup_objects.append(self.model.objects.create(**self.creation_kwargs))
 
-    def _get_creation_kwargs(self, name):
+    def _get_creation_kwargs(self, iter_obj):
         """
         Count creation kwargs on each name.
-        :param name: the name of object
+        :param iter_obj: the name of object
         :return: creation kwargs dict
         :rtype: dict
         """
