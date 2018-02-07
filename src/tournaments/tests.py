@@ -29,7 +29,7 @@ class TestUUIDSharding(BaseShardingTest):
         return found_in_right_db
 
 
-class ShardTest(TestUUIDSharding):
+class ShardTest:
     def test_sharding(self):
         for obj in self.setup_objects:
             self.assertTrue(self._in_right_shard(obj),
